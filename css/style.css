@@ -4,11 +4,14 @@
   --text: #1b2944;
   --muted: #66738d;
   --line: #e3e8f1;
-  --bg: #ffffff;
+  --bg: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   --section: #f7f9fc;
   --lavender: #e9edff;
   --blue-lavender: #b6b9ff;
   --white: #ffffff;
+  --ink: #11192c;
+  --lime: #c8ff3d;
+  --purple: #837fff;
   --radius: 18px;
   --shadow: 0 18px 45px rgba(21, 33, 58, 0.08);
 }
@@ -180,7 +183,7 @@ a {
   padding: 72px 0 82px;
   background:
     radial-gradient(circle at 82% 28%, rgba(208, 213, 255, 0.34), transparent 26%),
-    linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+    linear-gradient(to bottom, #fff1eb 0%, #c0c1ee7a 100%);
 }
 
 .hero-grid {
@@ -268,7 +271,7 @@ a {
   width: 78%;
   height: 70%;
   border-radius: 45% 55% 42% 58%;
-  background: rgba(204, 209, 255, 0.48);
+  background: #c0c4ee7a;
   filter: blur(0.2px);
   transform: rotate(-10deg);
 }
@@ -278,6 +281,7 @@ a {
   overflow: hidden;
   background: #10192d;
   box-shadow: 0 28px 60px rgba(18, 29, 51, 0.22);
+
 }
 
 .laptop {
@@ -288,6 +292,9 @@ a {
   border: 7px solid #1d273d;
   border-bottom-width: 14px;
   border-radius: 17px 17px 7px 7px;
+  transform: rotate(2deg);
+  animation: float 5s ease-in-out infinite;
+  
 }
 
 .laptop::after {
@@ -370,6 +377,8 @@ a {
   border-radius: 24px;
   border: 4px solid #202a40;
   z-index: 2;
+  transform: rotate(360deg);
+  animation: float 3s ease-in-out infinite;
 }
 
 .phone-speaker {
@@ -423,13 +432,21 @@ a {
   font-size: 0.42rem;
 }
 
+@keyframes float {
+  0%,100% {
+    transform: rotate(2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(1deg) translateY(-9px);
+  }
+}
+
 .section {
   padding: 92px 0;
 }
 
 .templates {
-  background: #f7f9fc;
-}
+background: linear-gradient(to top, #fff1eb 0%, #c0c4ee7a 100%);}
 
 .section-heading {
   max-width: 720px;
@@ -600,9 +617,137 @@ a {
   font-size: 1rem;
 }
 
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr .55fr;
+  gap: 50px;
+  align-items: end;
+}
+.section-head.centered {
+  grid-template-columns: 1fr;
+  max-width: 620px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+.section-kicker {
+  color: #838c9e;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+.section-head h2 {
+  margin-top: 14px;
+  font-size: clamp(2.7rem,5vw,5rem);
+  line-height: .92;
+  letter-spacing: -.07em;
+}
+.section-head h2 span {
+  color: var(--purple);
+}
+.section-head p {
+  color: var(--muted);
+  font-size: .93rem;
+  line-height: 1.7;
+}
+.filter-row {
+  display: flex;
+  gap: 9px;
+  margin: 45px 0 22px;
+  flex-wrap: wrap;
+}
+.filter {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: #677083;
+  font-size: .72rem;
+  font-weight: 700;
+}
+.filter.active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+}
+.template-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  background: #fff;
+  transition: .25s;
+}
+.template-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+.template-card.hidden {
+  display: none;
+}
+.template-preview {
+  position: relative;
+  min-height: 250px;
+  padding: 20px;
+  overflow: hidden;
+}
+.preview-dark {
+  background: #172137;
+  color: #fff;
+}
+.process {
+  background: var(--ink);
+  color: #fff;
+}
+.process .section-kicker {
+  color: #f7f7f7;
+}
+.process .section-head p {
+  color: #9ba5b9;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+}
+.process-card {
+  min-height: 250px;
+  padding: 26px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  background: rgba(255,255,255,.035);
+}
+.process-card.featured {
+  background: var(--purple);
+  color: var(--ink);
+  transform: translateY(-12px);
+}
+.process-card span {
+  color: #f9fafc;
+  font-family: "Space Grotesk";
+  font-size: .7rem;
+}
+.process-card h3 {
+  margin-top: 72px;
+  font-size: 2rem;
+  letter-spacing: -.06em;
+}
+.process-card p {
+  margin-top: 8px;
+  color: #9da8bb;
+  font-size: .78rem;
+  line-height: 1.7;
+}
+.process-card.featured p {
+  color: #11192c;
+}
 .contact {
   padding: 92px 0 74px;
-  background: #0e172a;
+  background: var(--ink);
   color: white;
 }
 
@@ -751,7 +896,7 @@ a {
 }
 
 .footer {
-  background: #0e172a;
+  background: var(--ink);
   border-top: 1px solid rgba(205, 212, 226, 0.08);
   color: white;
 }
